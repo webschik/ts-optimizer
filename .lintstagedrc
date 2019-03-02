@@ -1,0 +1,10 @@
+{
+  "__tests__/**/*.js": [
+    "eslint",
+    "prettier"
+  ],
+  "src/**/*.ts": [
+    "eslint",
+    "prettier"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "name": "ts-optimizer",
+  "version": "0.1.0",
+  "description": "Set of TypeScript transformers that help to get more optimal code after compilation",
+  "main": "lib/ts-transformers.js",
+  "files": [
+    "/lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webschik/ts-optimizer.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "rm -rf lib && ./node_modules/.bin/tsc --rootDir src",
+    "prepublish": "npm test && npm run build"
+  },
+  "keywords": [
+    "TypeScript",
+    "transformers",
+    "optimization"
+  ],
+  "author": "webschik",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.9",
+    "@types/node": "^11.10.4",
+    "@types/react": "^16.8.6",
+    "@typescript-eslint/parser": "^1.4.2",
+    "eslint": "^5.15.0",
+    "husky": "^1.3.1",
+    "jest": "^24.1.0",
+    "jest-coverage-processor": "^1.1.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "typescript": "^3.3.3333"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 89.28,
+        "branches": 80,
+        "functions": 92.85,
+        "lines": 89.09
+      }
+    },
+    "transform": {
+      ".*": "<rootDir>/jest/preprocessor.js"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testResultsProcessor": "<rootDir>/jest/test-results-processor.js",
+    "testRegex": "(/__tests__/.*|\\.(spec))\\.js$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ]
+  }
+}

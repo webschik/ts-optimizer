@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transformers JsxAttribute should remove leading and trailing spaces in template literals 1`] = `
+"export default class Button {
+    render() {
+        const className1 = 'className1';
+        const className2 = 'className2';
+        return (<button disabled class={\`\${className1}  \${className2}\`} className={\`\${className1}
+                                            \${\`\${className2}\`}\`}/>);
+    }
+}
+"
+`;
