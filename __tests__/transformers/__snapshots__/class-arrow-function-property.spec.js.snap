@@ -2,9 +2,8 @@
 
 exports[`Transformers ClassArrowFunctionProperty should convert class arrow function to bound methods 1`] = `
 "class Button1 {
-    constructor() { this.fn1 = this.fn1.bind(this); this.fn1 = this.fn1.bind(this); this.fn2 = this.fn2.bind(this); this.fn3 = this.fn3.bind(this); }
+    constructor() { this.fn1 = this.fn1.bind(this); this.fn2 = this.fn2.bind(this); this.fn3 = this.fn3.bind(this); }
     fn1(a, b) { }
-    fn1(a, b, c) { }
     fn2() { }
     fn3() {
         return 2;
@@ -14,9 +13,8 @@ exports[`Transformers ClassArrowFunctionProperty should convert class arrow func
     }
 }
 class Button2 extends React.Component {
-    constructor(...args) { super(...args); this.fn1 = this.fn1.bind(this); this.fn1 = this.fn1.bind(this); this.fn2 = this.fn2.bind(this); this.fn3 = this.fn3.bind(this); }
+    constructor(...args) { super(...args); this.fn1 = this.fn1.bind(this); this.fn2 = this.fn2.bind(this); this.fn3 = this.fn3.bind(this); }
     fn1(a, b) { }
-    fn1(a, b, c) { }
     fn2() { }
     fn3() {
         return 2;
@@ -30,16 +28,12 @@ class Button3 extends React.Component {
         super(props);
         this.state = {};
         this.fn1 = this.fn1.bind(this);
-        this.fn1 = this.fn1.bind(this);
         this.fn2 = this.fn2.bind(this);
         this.fn3 = this.fn3.bind(this);
     }
     fn1(a, b) { }
-    fn1(a, b, c) { }
     fn2() { }
-    fn3() {
-        return 2;
-    }
+    fn3() { return 2; }
     render() {
         return <button />;
     }

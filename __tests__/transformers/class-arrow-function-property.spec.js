@@ -11,7 +11,6 @@ describe('Transformers', () => {
                 `
                     class Button1 {
                         private fn1 = (a, b) => {};
-                        private fn1 = (a, b, c) => {};
                         protected fn2 = () => {};
                         fn3 = () => {
                           return 2;
@@ -24,7 +23,6 @@ describe('Transformers', () => {
                     
                     class Button2 extends React.Component {
                         private fn1 = (a, b) => {};
-                        private fn1 = (a, b, c) => {};
                         protected fn2 = () => {};
                         fn3 = () => {
                           return 2;
@@ -42,11 +40,8 @@ describe('Transformers', () => {
                         }
                     
                         private fn1 = (a, b) => {};
-                        private fn1 = (a, b, c) => {};
                         protected fn2 = () => {};
-                        fn3 = () => {
-                          return 2;
-                        } 
+                        fn3 = () => 2
                         
                         render () {
                             return <button />
