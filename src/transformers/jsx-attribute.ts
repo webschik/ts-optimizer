@@ -18,6 +18,10 @@ export function createJsxAttributeTransformerFactory(
                     node = ts.createTemplateHead((node as ts.TemplateHead).text.trim());
                     break;
                 }
+                case ts.SyntaxKind.TemplateMiddle: {
+                    node = ts.createTemplateMiddle((node as ts.TemplateMiddle).text.replace(/\s{2,}/, ' '));
+                    break;
+                }
                 case ts.SyntaxKind.TemplateTail: {
                     node = ts.createTemplateTail((node as ts.TemplateTail).text.trim());
                     break;
