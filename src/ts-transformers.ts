@@ -1,13 +1,10 @@
-import {createClassArrowFunctionPropertyTransformerFactory} from './transformers/class-arrow-function-property';
-import {createJsxAttributeTransformerFactory} from './transformers/jsx-attribute';
-
 module.exports = function getCustomTransformers() {
     return {
         before: [
-            createJsxAttributeTransformerFactory({
+            require('./transformers/jsx-attribute')({
                 attributesWithTemplateLiterals: ['className', 'class']
             }),
-            createClassArrowFunctionPropertyTransformerFactory()
+            require('./transformers/class-arrow-function-property')()
         ]
     };
 };

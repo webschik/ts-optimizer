@@ -1,6 +1,6 @@
 import * as ts from 'typescript';
 
-export function createClassArrowFunctionPropertyTransformerFactory(): ts.TransformerFactory<ts.SourceFile> {
+module.exports = function createClassArrowFunctionPropertyTransformerFactory(): ts.TransformerFactory<ts.SourceFile> {
     return function classArrowFunctionPropertyTransformerFactory(
         context: ts.TransformationContext
     ): ts.Transformer<ts.SourceFile> {

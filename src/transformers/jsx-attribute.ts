@@ -4,7 +4,7 @@ export interface JsxAttributeTransformerOptions {
     attributesWithTemplateLiterals?: string[];
 }
 
-export function createJsxAttributeTransformerFactory(
+module.exports = function createJsxAttributeTransformerFactory(
     options: JsxAttributeTransformerOptions
 ): ts.TransformerFactory<ts.SourceFile> {
     const attributesWithTemplateLiterals: string[] = Array.isArray(options.attributesWithTemplateLiterals)

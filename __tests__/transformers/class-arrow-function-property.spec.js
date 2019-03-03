@@ -1,5 +1,5 @@
 const ts = require('typescript');
-const {createClassArrowFunctionPropertyTransformerFactory} = require('../../src/transformers/class-arrow-function-property');
+const createClassArrowFunctionPropertyTransformerFactory = require('../../src/transformers/class-arrow-function-property');
 
 describe('Transformers', () => {
     describe('ClassArrowFunctionProperty', () => {

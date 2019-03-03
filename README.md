@@ -27,6 +27,39 @@ const path = require('path');
 }
 ```
 
+or you can create your own transformers list:
+
+```js
+// your-transformers.js
+module.exports = function getCustomTransformers() {
+    return {
+        before: [
+            require('ts-optimizer/lib/transformers/jsx-attribute')({
+                attributesWithTemplateLiterals: ['className', 'class']
+            }),
+            require('ts-optimizer/lib/transformers/class-arrow-function-property')()
+        ]
+    };
+};
+
+```
+
+and pass it to options
+
+```js
+{
+    test: /\.tsx?$/,
+    use: [
+        {
+            loader: 'ts-loader', // or 'awesome-typescript-loader'
+            options: {
+                getCustomTransformers: path.join(__dirname, './your-transformers.js')
+            }
+        }
+    ]
+}
+```
+
 ## Transformers
 ### Template Literals in JSX attributes 
 This transformer removes unnecessary spaces in template literals in JSX attributes.

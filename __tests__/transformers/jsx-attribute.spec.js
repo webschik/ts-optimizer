@@ -1,5 +1,5 @@
 const ts = require('typescript');
-const {createJsxAttributeTransformerFactory} = require('../../src/transformers/jsx-attribute');
+const createJsxAttributeTransformerFactory = require('../../src/transformers/jsx-attribute');
 
 describe('Transformers', () => {
     describe('JsxAttribute', () => {
