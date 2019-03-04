@@ -26,6 +26,11 @@ describe('Transformers', () => {
                                                 \`}
                                             \`}
                                     />
+                                    <button className={\`
+                                                        item
+                                                        item2
+                                                        item3
+                                                    \`} />
                                 </div>
                             );
                         }
@@ -49,6 +54,7 @@ describe('Transformers', () => {
             expect(outputFileText).toContain('className={`search-control__close-button${value ? ` ${visibleCloseButtonClassName}` : \'\'}`}');
             expect(outputFileText).toContain('class={`item ${className1} ${className2} item2`}');
             expect(outputFileText).toContain('className={`${className1} ${`${className2}`}`}');
+            expect(outputFileText).toContain('className={`item item2 item3`}');
             expect(outputFileText).toMatchSnapshot();
         });
     });

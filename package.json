@@ -1,6 +1,6 @@
 {
   "name": "ts-optimizer",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Set of TypeScript transformers that optimize your code before compilation",
   "main": "lib/ts-transformers.js",
   "files": [
@@ -47,10 +47,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 96.82,
+        "statements": 96.96,
         "branches": 90.9,
         "functions": 100,
-        "lines": 96.77
+        "lines": 96.92
       }
     },
     "transform": {

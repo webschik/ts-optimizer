@@ -8,6 +8,7 @@ exports[`Transformers JsxAttribute should remove leading and trailing spaces in 
         return (<div>
                                     <button className={\`search-control__close-button\${value ? \` \${visibleCloseButtonClassName}\` : ''}\`}/>
                                     <button disabled class={\`item \${className1} \${className2} item2\`} className={\`\${className1} \${\`\${className2}\`}\`}/>
+                                    <button className={\`item item2 item3\`}/>
                                 </div>);
     }
 }
