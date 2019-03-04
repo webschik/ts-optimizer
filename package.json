@@ -1,6 +1,6 @@
 {
   "name": "ts-optimizer",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Set of TypeScript transformers that optimize your code before compilation",
   "main": "lib/ts-transformers.js",
   "files": [
