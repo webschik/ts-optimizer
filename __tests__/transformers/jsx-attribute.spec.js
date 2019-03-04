@@ -9,21 +9,24 @@ describe('Transformers', () => {
             const inputFile = ts.createSourceFile(
                 'test.ts',
                 `
-                    export default class Button {
+                    export default class Element {
                         render () {
                             const className1 = 'className1';
                             const className2 = 'className2';
     
                             return (
-                                <button disabled
-                                        class={\`item   \${className1}  \${className2}  item2\`}
-                                        className={\`
-                                            \${className1}
-                                            \${\`
-                                                \${className2}    
+                                <div>
+                                    <button className={\`search-control__close-button\${value ? \` \${visibleCloseButtonClassName}\` : ''}\`} />
+                                    <button disabled
+                                            class={\`item   \${className1}  \${className2}  item2\`}
+                                            className={\`
+                                                \${className1}
+                                                \${\`
+                                                    \${className2}
+                                                \`}
                                             \`}
-                                        \`}
-                                />
+                                    />
+                                </div>
                             );
                         }
                     }
@@ -43,6 +46,7 @@ describe('Transformers', () => {
             const outputFileText = printer.printFile(outputFile);
 
             expect(printer.printFile(inputFile)).not.toBe(outputFileText);
+            expect(outputFileText).toContain('className={`search-control__close-button${value ? ` ${visibleCloseButtonClassName}` : \'\'}`}');
             expect(outputFileText).toContain('class={`item ${className1} ${className2} item2`}');
             expect(outputFileText).toContain('className={`${className1} ${`${className2}`}`}');
             expect(outputFileText).toMatchSnapshot();

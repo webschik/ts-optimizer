@@ -17,9 +17,17 @@ module.exports = function createJsxAttributeTransformerFactory(
         const attributeWithTemplateLiteralVisitor: ts.Visitor = (node: ts.Node) => {
             switch (node.kind) {
                 case ts.SyntaxKind.TemplateHead: {
-                    const text: string = (node as ts.TemplateHead).text.trimLeft();
+                    const {parent} = node;
+                    let {text} = (node as ts.TemplateHead);
 
-                    node = ts.createTemplateHead(text && text.replace(multipleSpacesPattern, ' '));
+                    if (parent && parent.parent && parent.parent.kind === ts.SyntaxKind.ConditionalExpression) {
+                        text = text.replace(multipleSpacesPattern, ' ');
+                    } else {
+                        text = text.trimLeft();
+                        text = text && text.replace(multipleSpacesPattern, ' ');
+                    }
+
+                    node = ts.createTemplateHead(text);
                     break;
                 }
                 case ts.SyntaxKind.TemplateMiddle: {
