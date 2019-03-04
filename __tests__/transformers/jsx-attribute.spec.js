@@ -16,7 +16,7 @@ describe('Transformers', () => {
     
                             return (
                                 <button disabled
-                                        class={\`   \${className1}  \${className2}  \`}
+                                        class={\`item   \${className1}  \${className2}  item2\`}
                                         className={\`
                                             \${className1}
                                             \${\`
@@ -43,6 +43,8 @@ describe('Transformers', () => {
             const outputFileText = printer.printFile(outputFile);
 
             expect(printer.printFile(inputFile)).not.toBe(outputFileText);
+            expect(outputFileText).toContain('class={`item ${className1} ${className2} item2`}');
+            expect(outputFileText).toContain('className={`${className1} ${`${className2}`}`}');
             expect(outputFileText).toMatchSnapshot();
         });
     });

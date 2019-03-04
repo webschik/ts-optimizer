@@ -4,6 +4,8 @@ export interface JsxAttributeTransformerOptions {
     attributesWithTemplateLiterals?: string[];
 }
 
+const multipleSpacesPattern: RegExp = /\s{2,}/;
+
 module.exports = function createJsxAttributeTransformerFactory(
     options: JsxAttributeTransformerOptions
 ): ts.TransformerFactory<ts.SourceFile> {
@@ -15,15 +17,19 @@ module.exports = function createJsxAttributeTransformerFactory(
         const attributeWithTemplateLiteralVisitor: ts.Visitor = (node: ts.Node) => {
             switch (node.kind) {
                 case ts.SyntaxKind.TemplateHead: {
-                    node = ts.createTemplateHead((node as ts.TemplateHead).text.trim());
+                    const text: string = (node as ts.TemplateHead).text.trimLeft();
+
+                    node = ts.createTemplateHead(text && text.replace(multipleSpacesPattern, ' '));
                     break;
                 }
                 case ts.SyntaxKind.TemplateMiddle: {
-                    node = ts.createTemplateMiddle((node as ts.TemplateMiddle).text.replace(/\s{2,}/, ' '));
+                    node = ts.createTemplateMiddle((node as ts.TemplateMiddle).text.replace(multipleSpacesPattern, ' '));
                     break;
                 }
                 case ts.SyntaxKind.TemplateTail: {
-                    node = ts.createTemplateTail((node as ts.TemplateTail).text.trim());
+                    const text: string = (node as ts.TemplateTail).text.trimRight();
+
+                    node = ts.createTemplateTail(text && text.replace(multipleSpacesPattern, ' '));
                     break;
                 }
             }
